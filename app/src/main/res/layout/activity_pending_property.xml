@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PENDING PROPERTIES"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="70dp"
+            android:layout_height="3dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/primary"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/top_rounded_corners"
+                android:backgroundTint="@color/light_green"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    app:lottie_fileName="empty_prop.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"/>
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-50dp"
+                    android:textSize="18sp"
+                    android:text="No Pending Property Requests"
+                    android:gravity="center"
+                    android:textColor="@color/dark_gray"/>
+            </LinearLayout>
+            <GridView
+                android:id="@+id/pendingP_Grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:numColumns="1"
+                android:visibility="visible"
+                />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

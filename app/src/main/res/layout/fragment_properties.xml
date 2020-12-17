@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/aa"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+    <TextView
+        android:id="@+id/up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UP"
+        android:textSize="32sp"
+        android:transitionName="logo1"
+        android:textColor="@color/primary"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOWN"
+        android:transitionName="logo2"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:layout_weight="1"
+        />
+
+    <ImageView
+        android:id="@+id/addProp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/add"
+        android:layout_gravity="center_vertical"
+        android:outlineAmbientShadowColor="@color/primary"
+
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp"
+        android:orientation="horizontal">
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_searchbar"
+            android:layout_weight="1"
+
+            />
+        <LinearLayout
+            android:id="@+id/filter"
+            android:transitionName="filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/filter_background"
+            android:paddingRight="10dp"
+            >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/filter"
+                android:tint="@color/gray"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+  <GridView
+      android:id="@+id/propertyGrid"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:numColumns="1"
+      android:layout_marginTop="200dp"
+      />
+
+</RelativeLayout>

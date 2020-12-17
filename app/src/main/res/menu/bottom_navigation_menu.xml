@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/bottom_nav_dashboard"
+        android:icon="@drawable/ic_safari"
+        android:title="Properties"/>
+    <item
+        android:id="@+id/bottom_nav_agents"
+        android:icon="@drawable/ic_customer_service"
+        android:title="Agents"/>
+
+    <item
+        android:id="@+id/bottom_nav_about"
+        android:icon="@drawable/ic_about"
+        android:title="About Us"/>
+    <item
+        android:id="@+id/bottom_nav_profile"
+        android:icon="@drawable/ic_user"
+        android:title="Profile"/>
+
+</menu>

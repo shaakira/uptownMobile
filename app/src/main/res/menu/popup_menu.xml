@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popup_view"
+        android:title="View Appointments"/>
+    <item
+        android:id="@+id/popup_cancel"
+        android:title="Cancel Appointments"/>
+    <item
+        android:id="@+id/popup_done"
+        android:title="Move to Done"/>
+</menu>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+   >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <View
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/darker_gray"
+            />
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="MAKE APPOINTMENT"
+    android:paddingTop="20dp"
+    android:layout_margin="20dp"
+    android:textColor="@color/black"
+    android:textSize="22sp"
+    />
+        <View
+            android:layout_width="70dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="-18dp"
+            android:background="@color/primary"
+            android:layout_marginLeft="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/text_field_background"
+                android:paddingLeft="10dp"
+                android:hint="Name"
+                android:textCursorDrawable="@drawable/cursor"
+                android:layout_weight="1"
+                android:inputType="text"/>
+            <View
+                android:layout_width="10dp"
+                android:layout_height="50dp"/>
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/text_field_background"
+                android:paddingLeft="10dp"
+                android:hint="Phone"
+                android:textCursorDrawable="@drawable/cursor"
+                android:layout_weight="1"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/text_field_background"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:hint="Email"
+            android:textCursorDrawable="@drawable/cursor"
+            android:inputType="textEmailAddress"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/text_field_background"
+                android:id="@+id/date"
+                android:clickable="true"
+                android:hint="Date"
+                android:editable="false"
+                android:focusable="false"
+                android:paddingLeft="10dp"
+                android:textCursorDrawable="@drawable/cursor"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="10dp"
+                android:layout_height="50dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/text_field_background"
+                android:id="@+id/time"
+                android:clickable="true"
+                android:hint="Time"
+                android:editable="false"
+                android:focusable="false"
+                android:paddingLeft="10dp"
+                android:textCursorDrawable="@drawable/cursor"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/text_field_background"
+            android:id="@+id/note"
+            android:text="Hi! I found your listing on Uptown, and I'd like to book a tour. Can you please confirm this time slot?"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/addAppointment"
+            android:text="SEND"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:textSize="17sp"
+            android:textCursorDrawable="@drawable/cursor"
+            android:backgroundTint="@color/black"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

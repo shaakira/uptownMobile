@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">uptown</string>
+    <string name="access_heading">ACCESS DENIED</string>
+    <string name="access_des">YOU DON&quot;T HAVE PERMISSION TO ACCESS.
+CONTACT AN ADMINISTRATOR OR \nGO TO THE HOME PAGE
+AND BROWSE OTHER PAGES.</string>
+
+    <string name="add_property_dialog">
+        Please sign in as an OWNER or as an AGENT to add a property to uptown.
+    </string>
+    <string name="appointment_text">Hi! I found your listing on Uptown, and I&quot;d like to book a tour. Can you please confirm this time slot?</string>
+    <string name="prop_sample_text">
+        Once in a life time opportunity to lease the Entire Apartment block. This boutique apartment block of 3 individual apartments plus a Roof top is located in the heart of Colombo with access to all amenities.
+    </string>
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+
+    <string-array name="query_suggestions">
+        <item>Colombo</item>
+        <item>Negombo</item>
+        <item>Galle</item>
+        <item>Kandy</item>
+        <item>Pelawatta</item>
+        <item>Kurunegala</item>
+        <item>Gampaha</item>
+    </string-array>
+</resources>

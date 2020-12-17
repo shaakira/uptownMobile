@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_change_password_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/aa"
+    tools:context=".ChangePasswordScreen"
+    android:focusableInTouchMode="true"
+    >
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="30dp"
+        android:src="@drawable/back_button" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/light_green">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="138dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="ADD\nPROPERTY"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/day_border"
+                    android:padding="40dp"
+                    android:text="4/4"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/primary"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/dotted_border"
+    android:gravity="center"
+    android:orientation="vertical">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:elevation="3dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="upload.json"
+        app:lottie_loop="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="upload 3 images of your property"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/upload"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="UPLOAD"
+        android:textColor="@color/dark_green"
+        style="?attr/materialButtonOutlinedStyle"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:strokeColor="@color/dark_green"/>
+</LinearLayout>
+
+
+                <Button
+                    android:id="@+id/add"
+                    android:text="ADD PROPERTY"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="40dp"
+                    android:textSize="17sp"
+                    android:backgroundTint="@color/black"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
