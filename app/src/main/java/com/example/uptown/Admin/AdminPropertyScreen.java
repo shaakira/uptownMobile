@@ -86,12 +86,6 @@ public class AdminPropertyScreen extends AppCompatActivity implements ResponseCa
                 intent1.putExtra("direct","properties");
                 finish();
                 startActivity(intent1);
-//                Fragment fragment = new PropertiesFragment();
-//                FragmentManager fragmentManager = getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.content_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
             }
         });
         accept.setOnClickListener(new View.OnClickListener() {
@@ -145,12 +139,12 @@ public class AdminPropertyScreen extends AppCompatActivity implements ResponseCa
             String a_name = property.getUser().getFirstName() + " " + property.getUser().getLastName();
             name.setText(a_name);
             uType.setText(property.getUser().getuType());
-            if (property.getRateType().equals("perDay")) {
+            if (property.getRateType().equals("perDay")||property.getRateType().equals("Per Day")) {
                 priceType.setText("per day");
-            } else if (property.getRateType().equals("perMonth")) {
+            } else if (property.getRateType().equals("perMonth")||property.getRateType().equals("Per Month")) {
                 priceType.setText("per month");
 
-            } else if (property.getRateType().equals("perWeek")) {
+            } else if (property.getRateType().equals("perWeek")||property.getRateType().equals("Per Week")) {
                 priceType.setText("per week");
             } else {
                 priceType.setText("per year");

@@ -45,7 +45,7 @@ public interface PropertyInterface {
     @GET("mobile/api/property/requestAgain/{propId}")
     Call<ResponseBody> requestAgain(@Path("propId") int propId);
 
-    @GET("mobile/api/property/deleteProperty/{propId}/{advertiserId}}")
+    @GET("mobile/api/property/deleteProperty/{propId}/{advertiserId}")
     Call<ResponseBody> deleteProperty(@Path("propId") int propId, @Path("advertiserId") int advertiserId);
 
     @GET("mobile/api/property/admin/pending")

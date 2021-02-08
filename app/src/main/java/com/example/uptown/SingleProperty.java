@@ -77,6 +77,7 @@ public class SingleProperty extends AppCompatActivity implements ResponseCallBac
     User user1;
     BottomSheetDialog bottomSheetDialog;
     Integer agentId;
+    String value="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class SingleProperty extends AppCompatActivity implements ResponseCallBac
         id = prefs.getInt("id", 0);
         Intent intent = getIntent();
         propId = intent.getIntExtra("propId", 0);
+        String val=intent.getStringExtra("direct");
         propertyService = new PropertyService();
         userService = new UserService();
         appointmentService = new AppointmentService();
@@ -115,8 +117,17 @@ public class SingleProperty extends AppCompatActivity implements ResponseCallBac
         wishListImg = findViewById(R.id.wishListImg);
         backBtn.setOnClickListener((new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                SingleProperty.super.onBackPressed();
+            public void onClick(View view)
+            {
+                if(value.equals(val)){
+                    SingleProperty.super.onBackPressed();
+                }
+                else{
+                    Intent intent1=new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent1);
+
+                }
+
             }
         }));
         chat = findViewById(R.id.chat);

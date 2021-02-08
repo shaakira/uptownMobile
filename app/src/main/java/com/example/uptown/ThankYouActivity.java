@@ -38,6 +38,7 @@ public class ThankYouActivity extends AppCompatActivity {
             public void run() {
                 Intent intent=new Intent(ThankYouActivity.this,SingleProperty.class);
                 intent.putExtra("propId",propId);
+                intent.putExtra("direct","appointment");
                 startActivity(intent);
             }
         },2000);

@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.uptown.Admin.AdminActivity;
 import com.example.uptown.CallBacks.ResponseCallBack;
 import com.example.uptown.DTO.Request.AuthRequest;
@@ -20,15 +22,21 @@ import com.example.uptown.DTO.Response.AuthResponse;
 import com.example.uptown.Services.AuthService;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity implements ResponseCallBack {
-Button login;
-EditText username,password;
-ImageView backBtn;
-TextView signUpBtn;
-public AuthService authService;
+    Button login;
+    EditText username,password;
+    ImageView backBtn;
+    TextView signUpBtn;
+    //defining AwesomeValidation object
+    private AwesomeValidation awesomeValidation;
+
+
+    public AuthService authService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +49,23 @@ public AuthService authService;
         password=findViewById(R.id.password);
         backBtn=findViewById(R.id.backBtn);
         signUpBtn=findViewById(R.id.signUpBtn);
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        awesomeValidation.addValidation(this, R.id.username, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
+        awesomeValidation.addValidation(this, R.id.password, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.passworderror);
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String USERNAME=username.getText().toString();
-                String PASSWORD=password.getText().toString();
-                AuthRequest authRequest = new AuthRequest(USERNAME, PASSWORD);
-                doLogin(authRequest);
+                if (awesomeValidation.validate()) {
+                    //  Toast.makeText(Login.this, "Validation Successfull", Toast.LENGTH_LONG).show();
+                    String USERNAME=username.getText().toString();
+                    String PASSWORD=password.getText().toString();
+                    AuthRequest authRequest = new AuthRequest(USERNAME, PASSWORD);
+                    doLogin(authRequest);
+                    //process the data further
+                }
+
 
             }
         });
@@ -71,6 +89,20 @@ public AuthService authService;
 
         authService.Login(authRequest,this);
     }
+
+    private void submitForm() {
+        //first validate the form then move ahead
+    }
+
+    public static boolean checkEmailForValidity(String email) {
+
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
+
+    }
+
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     @Override
     public void onSuccess(Response response) throws IOException {

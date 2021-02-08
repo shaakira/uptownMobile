@@ -1,5 +1,6 @@
 package com.example.uptown.API;
 
+import com.example.uptown.DTO.Response.CustomerAppointmentDTO;
 import com.example.uptown.Model.Appointment;
 import com.example.uptown.Model.Enquiry;
 
@@ -44,5 +45,7 @@ public interface AppointmentInterface {
     @GET("mobile/api/appointment/cancelAppointment/{id}")
     Call<ResponseBody> cancelAppointment(@Path("id") int id);
 
+    @GET("mobile/api/appointment/customerAppointments/getAppointmentsCount/{customerId}")
+    Call<CustomerAppointmentDTO> getAppointmentsCount(@Path("customerId") int customerId);
 
 }

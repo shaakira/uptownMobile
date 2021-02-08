@@ -36,7 +36,15 @@ import com.example.uptown.R;
 import com.example.uptown.RetrofitClient.RetrofitClient;
 import com.example.uptown.Services.UserService;
 import com.example.uptown.WishListScreen;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -46,7 +54,7 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ProfileFragment extends Fragment implements ResponseCallBack {
+public class ProfileFragment extends Fragment implements ResponseCallBack, GoogleApiClient.OnConnectionFailedListener {
 
     UserService userService;
     TextView firstName, lastName, address, email, username, fName, lName, editProfile;
@@ -54,12 +62,30 @@ public class ProfileFragment extends Fragment implements ResponseCallBack {
     LinearLayout logout, wishList, appointments, enquiries, advertiserAppointments, myProperties;
     Dialog dialog;
     Button logoutBtn, cancelBtn;
+    private GoogleApiClient googleApiClient;
+    private GoogleSignInOptions gso;
+    private FirebaseAuth firebaseAuth;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         SharedPreferences prefs = getContext().getSharedPreferences("shared", MODE_PRIVATE);
+        firebaseAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+
+
+            googleApiClient = new GoogleApiClient.Builder(getContext())
+                    .enableAutoManage(getActivity(), this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+        }
         userService = new UserService();
         Integer id = prefs.getInt("id", 0);
         getProfile(id);
@@ -84,7 +110,23 @@ public class ProfileFragment extends Fragment implements ResponseCallBack {
     }
 
     public void logout() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            FirebaseAuth.getInstance().signOut();
+            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
+                    new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(Status status) {
+                            if (status.isSuccess()) {
+                                //  gotoMainActivity();
+                            } else {
+                                //  Toast.makeText(getApplicationContext(),"Session not close",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+        }
         userService.logout(getLogoutResponse());
+
     }
 
     @Override
@@ -255,6 +297,7 @@ public class ProfileFragment extends Fragment implements ResponseCallBack {
                     SharedPreferences.Editor editor = logout.edit();
                     editor.clear();
                     editor.commit();
+
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                     Toast.makeText(getActivity(), "logout", Toast.LENGTH_SHORT).show();
@@ -275,4 +318,8 @@ public class ProfileFragment extends Fragment implements ResponseCallBack {
         return profileResponseCallBack;
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }

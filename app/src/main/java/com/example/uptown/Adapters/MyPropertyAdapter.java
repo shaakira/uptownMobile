@@ -70,6 +70,8 @@ public class MyPropertyAdapter extends ArrayAdapter<Property> {
         viewHolder.propImage.setOnClickListener((view -> {
             Intent intent = new Intent(getContext(), SingleProperty.class);
             intent.putExtra("propId", dataModel.getId());
+            intent.putExtra("direct","");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getContext().startActivity(intent);
         }));
         return result;

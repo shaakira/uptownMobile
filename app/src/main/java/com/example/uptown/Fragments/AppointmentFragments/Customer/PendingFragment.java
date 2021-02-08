@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import com.example.uptown.Adapters.CustomerPendingAdapter;
 import com.example.uptown.Adapters.DeleteAdapter;
 import com.example.uptown.Adapters.PropertyAdapter;
 import com.example.uptown.CallBacks.ResponseCallBack;
+import com.example.uptown.DTO.Response.CustomerAppointmentDTO;
 import com.example.uptown.Model.Appointment;
 import com.example.uptown.Model.Property;
 import com.example.uptown.R;
@@ -38,7 +40,8 @@ public class PendingFragment extends Fragment implements ResponseCallBack {
     View view;
     AppointmentService appointmentService;
     Integer id;
-    RecyclerView gridView,backGround;
+    RecyclerView gridView, backGround;
+    TextView accept, decline, pending, all;
 
     public PendingFragment() {
     }
@@ -51,16 +54,23 @@ public class PendingFragment extends Fragment implements ResponseCallBack {
         appointmentService = new AppointmentService();
         id = prefs.getInt("id", 0);
         gridView = (RecyclerView) view.findViewById(R.id.pendingGrid);
-        backGround=view.findViewById(R.id.backGround);
+        backGround = view.findViewById(R.id.backGround);
+        accept = view.findViewById(R.id.accept);
+        decline = view.findViewById(R.id.decline);
+        pending = view.findViewById(R.id.pending);
+        all = view.findViewById(R.id.all);
         getAppointments(id);
+        getAppointmentsCount(id);
         return view;
     }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             getFragmentManager().beginTransaction().detach(this).attach(this).commit();
-        };
+        }
+        ;
     }
 
     public void getAppointments(int customerId) {
@@ -71,16 +81,20 @@ public class PendingFragment extends Fragment implements ResponseCallBack {
         appointmentService.deleteAppointment(appointmentId, getAppointmentDeleteResponse());
     }
 
+    public void getAppointmentsCount(int customerId) {
+        appointmentService.getAppointmentsCount(customerId, getAppointmentCountResponse());
+    }
+
     @Override
     public void onSuccess(Response response) throws IOException {
         List<Appointment> appointments = (List<Appointment>) response.body();
         if (!appointments.isEmpty()) {
-            List<Appointment> aList=new ArrayList<>(appointments);
+            List<Appointment> aList = new ArrayList<>(appointments);
             CustomerPendingAdapter adapter = new CustomerPendingAdapter(appointments, getContext());
             gridView.setAdapter(adapter);
             gridView.setHasFixedSize(true);
             gridView.setLayoutManager(new LinearLayoutManager(getContext()));
-            DeleteAdapter deleteAdapter=new DeleteAdapter(aList,getContext());
+            DeleteAdapter deleteAdapter = new DeleteAdapter(aList, getContext());
             backGround.setAdapter(deleteAdapter);
             backGround.setHasFixedSize(true);
             backGround.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -121,11 +135,35 @@ public class PendingFragment extends Fragment implements ResponseCallBack {
             @Override
             public void onSuccess(Response response) throws IOException {
                 ResponseBody responseBody = (ResponseBody) response.body();
-
                 if (responseBody.string().equals("Success")) {
-
                     Toast.makeText(getContext(), "Successfully appointment deleted", Toast.LENGTH_SHORT).show();
+
                 }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                if (errorMessage.equals("")) {
+                    Toast.makeText(getContext(), "Network Error Please check your Network Connection", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+        return userResponseCallBack;
+    }
+
+    public ResponseCallBack getAppointmentCountResponse() {
+        ResponseCallBack userResponseCallBack = new ResponseCallBack() {
+            @Override
+            public void onSuccess(Response response) throws IOException {
+                CustomerAppointmentDTO appointmentDTO = (CustomerAppointmentDTO) response.body();
+                int allCount=appointmentDTO.getAcceptedCount()+appointmentDTO.getDeclinedCount()+appointmentDTO.getPendingCount();
+                accept.setText(String.valueOf(appointmentDTO.getAcceptedCount()));
+                decline.setText(String.valueOf(appointmentDTO.getDeclinedCount()));
+                pending.setText(String.valueOf(appointmentDTO.getPendingCount()));
+                all.setText(String.valueOf(allCount));
+
             }
 
             @Override

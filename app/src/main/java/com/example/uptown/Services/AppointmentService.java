@@ -4,6 +4,8 @@ import com.example.uptown.API.AppointmentInterface;
 import com.example.uptown.API.EnquiryInterface;
 import com.example.uptown.CallBacks.CustomizeCallBack;
 import com.example.uptown.CallBacks.ResponseCallBack;
+import com.example.uptown.DTO.Response.ClientCountDTO;
+import com.example.uptown.DTO.Response.CustomerAppointmentDTO;
 import com.example.uptown.Model.Appointment;
 import com.example.uptown.Model.Enquiry;
 import com.example.uptown.RetrofitClient.RetrofitClient;
@@ -61,6 +63,8 @@ public class AppointmentService {
         Call<ResponseBody> appointmentResponseCall=appointmentInterface.cancelAppointment(id);
         appointmentResponseCall.enqueue(new CustomizeCallBack<ResponseBody>(callBack));
     }
-
-
+    public void getAppointmentsCount(int customerId, ResponseCallBack callback){
+        Call<CustomerAppointmentDTO> appointmentResponseCall = appointmentInterface.getAppointmentsCount(customerId);
+        appointmentResponseCall.enqueue(new CustomizeCallBack<CustomerAppointmentDTO>(callback));
+    }
 }

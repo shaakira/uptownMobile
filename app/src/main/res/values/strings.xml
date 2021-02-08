@@ -12,9 +12,16 @@ AND BROWSE OTHER PAGES.</string>
     <string name="prop_sample_text">
         Once in a life time opportunity to lease the Entire Apartment block. This boutique apartment block of 3 individual apartments plus a Roof top is located in the heart of Colombo with access to all amenities.
     </string>
+    s
+    <string name="nameerror">Enter a valid name</string>
+    <string name="passworderror">Enter a valid Password</string>
+    <string name="emailerror">Enter a valid email</string>
+    <string name="mobileerror">Enter a valid mobile</string>
+    <string name="dateerror">Enter a valid date</string>
+    <string name="ageerror">Enter a valid age</string>
     <string name="nav_drawer_open">Open navigation drawer</string>
     <string name="nav_drawer_close">Close navigation drawer</string>
-
+    <string name="web_client_id">719147522246-atvtnlece88jk2pf87018p4avf5c1r9r.apps.googleusercontent.com</string>
     <string-array name="query_suggestions">
         <item>Colombo</item>
         <item>Negombo</item>

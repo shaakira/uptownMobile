@@ -226,7 +226,7 @@ public class AdvertiserPropertyAdapter extends ArrayAdapter<Property> implements
                 else{
                     PublishedProperty publishedProperty=new PublishedProperty();
                     fragment=publishedProperty;
-                    publishedProperty.visibleList();
+//                    publishedProperty.visibleList();
                 }
 
             }

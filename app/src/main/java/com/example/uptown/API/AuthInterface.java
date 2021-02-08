@@ -17,12 +17,15 @@ import retrofit2.http.Part;
 public interface AuthInterface {
     @Multipart
     @POST("mobile/api/auth/signUp")
-    Call<ResponseBody> Register(@Part  MultipartBody.Part image, @Part("user") User user);
+    Call<AuthResponse> Register(@Part  MultipartBody.Part image, @Part("user") User user);
 
 
 
     @POST("mobile/api/auth/postLogin")
     Call<AuthResponse> Login(@Body AuthRequest authRequest);
 
+
+    @POST("mobile/api/auth/GooglesignUp")
+    Call<AuthResponse> GoogleLogin(@Body User user);
 
 }

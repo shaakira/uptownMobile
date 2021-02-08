@@ -28,8 +28,13 @@ public class AuthService {
     }
 
     public void Register(MultipartBody.Part image, User user, ResponseCallBack callback){
-        Call<ResponseBody> RegisterResponseCall = authInterface.Register(image,user);
-        RegisterResponseCall.enqueue(new CustomizeCallBack<ResponseBody>(callback));
+        Call<AuthResponse> RegisterResponseCall = authInterface.Register(image,user);
+        RegisterResponseCall.enqueue(new CustomizeCallBack<AuthResponse>(callback));
+    }
+
+    public void GoogleLogin( User user, ResponseCallBack callback){
+        Call<AuthResponse> GoogleResponseCall = authInterface.GoogleLogin(user);
+        GoogleResponseCall.enqueue(new CustomizeCallBack<AuthResponse>(callback));
     }
 
 }

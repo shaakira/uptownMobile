@@ -65,7 +65,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                removeWishList(wishlist1.getId());
+                removeWishList(wishlist.getId());
                 Position=position;
             }
         });

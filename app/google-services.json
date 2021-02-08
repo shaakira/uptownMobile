@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "719147522246",
+    "project_id": "uptown-ede5e",
+    "storage_bucket": "uptown-ede5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719147522246:android:ff8425ebc07ecd3b95dfc7",
+        "android_client_info": {
+          "package_name": "com.example.uptown"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719147522246-ocbtq199cop4gtuomola7d3l3eqaual5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uptown",
+            "certificate_hash": "2041c3f74f0865532d01ae027400bccdf4cb701e"
+          }
+        },
+        {
+          "client_id": "719147522246-atvtnlece88jk2pf87018p4avf5c1r9r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNk0NdfIDclWPd65-YyuUwWwTeKgtcC-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719147522246-atvtnlece88jk2pf87018p4avf5c1r9r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
